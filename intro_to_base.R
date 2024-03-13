@@ -328,6 +328,24 @@ mgd(tg$len,10.2)
 save(mgd,file='mean_greater_than_d')
 load('mean_greater_than_d')
 
+# Ex:
+cdg <- function(x,d) length(which(x>d))
+
+tgsupp <- split(tg,tg$supp)
+
+cdg(tgsupp$OJ$len,15)
 
 
+n0 <- function(x) length(which(x==0))
+
+n0(prgeng$wageinc)
+
+hld <- function(x,d) hist(x[which(x>d)])
+
+hld(tgsupp$OJ$len,15)
+
+
+# Lesson 17 ----
+
+for (i in 1:9) print(sum(pima[,i] == 0)) # find sum of all 0
 
