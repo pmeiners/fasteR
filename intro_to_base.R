@@ -367,3 +367,31 @@ zerosToNAs <- function(d,cols)
 # The loop goes through d, one column at a time. Since d[,j] means all of column j of d, then which(d[,j] == 0) will give us the indices in that column of elements that are 0s. Those indices in turn are row numbers in d. In other words, NArows is a vector cntaining the row numbers of the 0s in column j. In line 5, then, we replace the 0s we've found in column j by NAs.
 
 
+countNAs <- function(dfr){
+   for (j in colnames(dfr)) {
+      print(length(which(is.na(dfr[,j]))))
+      }
+}
+
+d <- data.frame(x=c(1,0,NA),y=c(NA,NA,13)) 
+d
+
+length(is.na(d[,2]))
+length(which(is.na(d[,1])))
+length(which(is.na(d[,2])))
+
+countNAs(dfr = d)
+
+
+# Lesson 19 ----
+
+f <- function(x,y)
+{
+   s <- x + y
+   d <- x - y
+   c(s,d)
+}
+
+# Lesson 20 ----
+
+
