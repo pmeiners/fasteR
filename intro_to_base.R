@@ -98,7 +98,6 @@ mean(tg[selecttg,1])
 
 head(faithful)
 max(faithful$eruptions)
-which(max(faithful$eruptions))
 
 order(faithful$eruptions)
 # returns index of the highest values
@@ -348,4 +347,23 @@ hld(tgsupp$OJ$len,15)
 # Lesson 17 ----
 
 for (i in 1:9) print(sum(pima[,i] == 0)) # find sum of all 0
+
+for (i in 2:6) {
+   zeroIndices <- which(pima[,i] == 0)
+   pima[zeroIndices,i] <- NA
+}
+
+# Lesson 18 ----
+
+zerosToNAs <- function(d,cols)
+	{
+ for (j in cols) {
+      NArows <- which(d[,j] == 0)
+	      d[NArows,j] <- NA
+	   }
+	   d
+	}
+
+# The loop goes through d, one column at a time. Since d[,j] means all of column j of d, then which(d[,j] == 0) will give us the indices in that column of elements that are 0s. Those indices in turn are row numbers in d. In other words, NArows is a vector cntaining the row numbers of the 0s in column j. In line 5, then, we replace the 0s we've found in column j by NAs.
+
 
