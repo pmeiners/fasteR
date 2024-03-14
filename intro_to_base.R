@@ -393,5 +393,49 @@ f <- function(x,y)
 }
 
 # Lesson 20 ----
+load(url(
+'https://github.com/matloff/fasteR/blob/master/data/prgeng.RData?raw=true'))
+head(prgeng)
+nrow(prgeng)
+pe <- prgeng
+edu <- as.numeric(pe$educ)
+pe$educ <- ifelse(edu < 13,12,edu)
 
+plot(pe$age,pe$wageinc,col=edu)
 
+# Ifelse can be done in several steps as well! Could be neater than case_when!
+nile <- ifelse(Nile > 1150,3,2)
+nile <- ifelse(Nile < 800,1,nile)
+table(nile)
+
+# Ex
+
+data(Nile)
+nile <- Nile
+
+for (i in 1:length(Nile)) {
+   if (Nile[i] > 1150){
+      nile[i] <- 3
+   } else if (Nile[i] < 800){
+      nile[i] <- 1
+      } else {
+         nile[i] <- 2
+         }
+}
+nile
+
+# Lesson 21 ----
+
+load(url('https://github.com/matloff/fasteR/blob/master/data/mlb.RData?raw=true'))
+head(mlb)
+
+age <- round(mlb$Age)
+table(age)
+
+taout <- tapply(mlb$Weight,age,mean)
+taout
+
+taout_catcher <- tapply(mlb$Weight,mlb$PosCategory,mean)
+taout_catcher
+
+barplot(table(age))
